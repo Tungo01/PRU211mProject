@@ -160,6 +160,10 @@ MonoBehaviour:
   jumpVelocity: 20
   groundHeight: 10
   isGrounded: 0
+  isHoldingJump: 0
+  maxHoldJumpTime: 0.4
+  holdJumpTimer: 0
+  jumpThreshold: 4
 --- !u!212 &379819161
 SpriteRenderer:
   m_ObjectHideFlags: 0
