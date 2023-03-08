@@ -83,6 +83,13 @@ public class Player : MonoBehaviour
                 velocity.x = maxSpeed;
             }
         }
+
+        
+        ////    Obstacles tuong tac voi Player
+        Vector2 obstOrigin = new Vector2(pos.x, pos.y);
+        RaycastHit2D obstHitX = Physics2D.Raycast(obstOrigin, Vector2.right, velocity.x * Time.deltaTime);
+
+
     }
     
 }

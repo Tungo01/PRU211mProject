@@ -5,6 +5,8 @@ using UnityEngine;
 public class Obstacle_Drone : MonoBehaviour
 {
     Player player;
+    GameObject droneTemplate;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,16 @@ public class Obstacle_Drone : MonoBehaviour
         if (pos.x < -100)
         {
             Destroy(gameObject);
+        }
+
+        // Random obstacles
+        int obstacleNum = Random.Range(0, 3);
+        for (int i = 0; i < obstacleNum; i++)
+        {
+            // Tao obstacles
+            GameObject box = Instantiate(droneTemplate.gameObject);
+
+            //Vector2 boxPos;
         }
 
         transform.position = pos;
