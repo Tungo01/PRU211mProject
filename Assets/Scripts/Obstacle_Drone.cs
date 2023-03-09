@@ -33,7 +33,15 @@ public class Obstacle_Drone : MonoBehaviour
             // Tao obstacles
             GameObject box = Instantiate(droneTemplate.gameObject);
 
-            //Vector2 boxPos;
+            // Position Random
+            //float y = goGround.groundHeight + 5;
+            //float halfWidth = goCollider.size.x / 2;
+            //float left = go.transform.position.x - halfWidth + 1;
+            //float right = go.transform.position.x + halfWidth -1;
+            //float x = Random.Range(left, right);
+
+            //Vector2 boxPos = new Vector2(x, y);
+            //box.transform.position = boxPos;
         }
 
         transform.position = pos;
