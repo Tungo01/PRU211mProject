@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e81ac89b2673e47ae4196e65212c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   gravity: -100
   acceleration: 10
   maxAcceleration: 10
@@ -230,12 +231,17 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   distance: 0
   jumpVelocity: 20
+=======
+  gravity: -400
+  velocity: {x: 0, y: 0}
+  jumpVelocity: 30
+>>>>>>> Stashed changes
   groundHeight: 10
   isGrounded: 0
   isHoldingJump: 0
   maxHoldJumpTime: 0.4
   holdJumpTimer: 0
-  jumpThreshold: 4
+  jumpThreshold: 1
 --- !u!212 &379819161
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -296,7 +302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379819159}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.2, y: 13.1, z: 0}
+  m_LocalPosition: {x: 6.46, y: 14.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -403,7 +409,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 16
+  orthographic size: 19.136013
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -427,7 +433,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792383409}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: 21.28, y: 16.14, z: -10}
+=======
+  m_LocalPosition: {x: 25.79, y: 19.2, z: -10}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
