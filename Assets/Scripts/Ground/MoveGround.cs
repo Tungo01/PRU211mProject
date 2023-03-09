@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveGround : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    protected float timeSpawn = 0f;
     // Update is called once per frame
     float speed = 10;
     void Update()
@@ -18,5 +18,12 @@ public class MoveGround : MonoBehaviour
 
         // Đặt tọa độ mới cho đối tượng
         transform.position = pos;
+        float angle = Random.Range(0, -10);
+        this.timeSpawn += Time.deltaTime;
+        if (this.timeSpawn > 10)
+        {
+            Destroy(gameObject);
+        } 
+            
     }
 }

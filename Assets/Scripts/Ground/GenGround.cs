@@ -16,13 +16,14 @@ public class GenGround : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float angle = Random.Range(0,-10);
         this.timeSpawn += Time.deltaTime;
         if (this.timeSpawn < this.timeDlay) return;
         else
         {
             this.timeSpawn = 0;
             GameObject minion = Instantiate(WalkPrefab);
-            minion.transform.position = new Vector3(28, -3, 0);
+            minion.transform.position = new Vector3(28, angle, 0);
         }
 
     }
