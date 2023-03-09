@@ -33,7 +33,15 @@ public class Obstacle_Spikes : MonoBehaviour
             // Tao obstacles
             GameObject box = Instantiate(spikesTemplate.gameObject);
 
-            //Vector2 boxPos;
+            // Position Random
+            //float y = goGround.groundHeight;
+            //float halfWidth = goCollider.size.x / 2;
+            //float left = go.transform.position.x - halfWidth + 1;
+            //float right = go.transform.position.x + halfWidth -1;
+            //float x = Random.Range(left, right);
+
+            //Vector2 boxPos = new Vector2(x, y);
+            //box.transform.position = boxPos;
         }
 
         transform.position = pos;
