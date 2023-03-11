@@ -83,6 +83,38 @@ public class Player : MonoBehaviour
                 velocity.x = maxSpeed;
             }
         }
+
+        
+        ////    Obstacles tuong tac voi Player
+        Vector2 obstOrigin = new Vector2(pos.x, pos.y);
+
+        RaycastHit2D obstHitX = Physics2D.Raycast(obstOrigin, Vector2.right, velocity.x * Time.deltaTime);
+        if (obstHitX.collider != null)
+        {
+            Obstacle_Box obstacle_Box = obstHitX.collider.GetComponent<Obstacle_Box>();
+            if (obstacle_Box != null)
+            {
+                hitObstacle_Box(obstacle_Box);
+            }
+        }
+
+        RaycastHit2D obstHitY = Physics2D.Raycast(obstOrigin, Vector2.up, velocity.y * Time.deltaTime);
+        if (obstHitY.collider != null)
+        {
+            Obstacle_Box obstacle_Box = obstHitY.collider.GetComponent<Obstacle_Box>();
+            if (obstacle_Box != null)
+            {
+                hitObstacle_Box(obstacle_Box);
+            }
+        }
+
+    }
+
+    ////    Destroy Obstacle khi va cham
+    void hitObstacle_Box(Obstacle_Box obstacle_Box)
+    {
+        Destroy(obstacle_Box.gameObject);
+        velocity.x *= 0.7f;
     }
     
 }
