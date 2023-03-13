@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public bool isGrounded = false;
     public bool isHoldingJump = false;
     public float maxHoldJumpTime = 0.4f;
+    public float maxMaxHoldJumpTime = 0.4f;
     public float holdJumpTimer = 0f;
     public float jumpThreshold = 1; 
     // Start is called before the first frame update
@@ -61,20 +62,32 @@ public class Player : MonoBehaviour
                 velocity.y += gravity * Time.deltaTime;
 
             }
-            
-            if (pos.y <= groundHeight)
+            ////
+            Vector2 rayOrigin = new Vector2(pos.x + 0.7f, pos.y);
+            Vector2 rayDirection = Vector2.up;
+            float rayDistance = velocity.y * Time.deltaTime;
+            RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance);
+            if(hit2D.collider != null)
             {
-                pos.y = groundHeight;
-                isGrounded = true;
-                
+                Ground ground = hit2D.collider.GetComponent<Ground>();
+                if (ground != null)
+                {
+                    groundHeight = ground.groundHeight;
+                    pos.y = groundHeight;
+                    velocity.y = 0;
+                    isGrounded = true;
+                }
             }
+            Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.red);
+            ////
+            
         }
-        transform.position = pos;
 
         distance += velocity.x * Time.deltaTime; // = score
         if (isGrounded)
         {   float velocityRatio = velocity.x / maxSpeed; // speed cang nhanh cang kho tang toc
-            acceleration = maxAcceleration * (1- velocityRatio); 
+            acceleration = maxAcceleration * (1- velocityRatio);
+            maxHoldJumpTime = maxMaxHoldJumpTime * velocityRatio;
 
             velocity.x += acceleration * Time.deltaTime;
             
@@ -82,9 +95,25 @@ public class Player : MonoBehaviour
             {
                 velocity.x = maxSpeed;
             }
+
+            ////
+            Vector2 rayOrigin = new Vector2(pos.x - 0.7f, pos.y);
+            Vector2 rayDirection = Vector2.up;
+            float rayDistance = velocity.y * Time.deltaTime;
+            RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance);
+            if(hit2D.collider == null)
+	    {
+                isGrounded = false;
+            }
+            Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.yellow);
+
+            ////
         }
 
-        
+	    transform.position = pos;
+
+
+
         ////    Obstacles tuong tac voi Player
         Vector2 obstOrigin = new Vector2(pos.x, pos.y);
 
@@ -109,6 +138,7 @@ public class Player : MonoBehaviour
         }
 
     }
+
 
     ////    Destroy Obstacle khi va cham
     void hitObstacle_Box(Obstacle_Box obstacle_Box)
