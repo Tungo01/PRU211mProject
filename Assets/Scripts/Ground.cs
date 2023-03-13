@@ -11,8 +11,7 @@ public class Ground : MonoBehaviour
     BoxCollider2D collider;
     bool didGenerateGround = false;
 
-    
-
+    public Obstacle_Box boxTemplate;
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
@@ -59,6 +58,23 @@ public class Ground : MonoBehaviour
         Ground goGround = go.GetComponent<Ground>();
         goGround.groundHeight = go.transform.position.y + (goCollider.size.y / 2);
 
+        // Random obstacles
+        int obstacleNum = Random.Range(0, 3);
+        for (int i = 0; i < obstacleNum; i++)
+        {
+            // Tao obstacles
+            GameObject box = Instantiate(boxTemplate.gameObject);
+
+            // Position Random
+            float y = goGround.groundHeight;
+            float halfWidth = goCollider.size.x / 2;
+            float left = go.transform.position.x - halfWidth + 1;
+            float right = go.transform.position.x + halfWidth - 1;
+            float x = Random.Range(left, right);
+
+            Vector2 boxPos = new Vector2(x, y);
+            box.transform.position = boxPos;
+        }
     }
 
 }
