@@ -11,7 +11,7 @@ public class Ground : MonoBehaviour
     BoxCollider2D collider;
     bool didGenerateGround = false;
 
-    public Obstacle_Box boxTemplate;
+    
 
     void Start()
     {
