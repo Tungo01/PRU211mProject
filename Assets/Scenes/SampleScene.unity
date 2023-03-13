@@ -183,6 +183,7 @@ MonoBehaviour:
   groundRight: 0
   screenRight: 0
   boxTemplate: {fileID: 1621420614754633137, guid: 99a95aebb6031514faf055b15c5da49b, type: 3}
+  droneTemplate: {fileID: 6743740205188630524, guid: 49ec054064779d44795a76528592edfa, type: 3}
 --- !u!4 &207459751
 Transform:
   m_ObjectHideFlags: 0

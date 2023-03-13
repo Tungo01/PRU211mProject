@@ -121,9 +121,14 @@ public class Player : MonoBehaviour
         if (obstHitX.collider != null)
         {
             Obstacle_Box obstacle_Box = obstHitX.collider.GetComponent<Obstacle_Box>();
+            Obstacle_Drone obstacle_Drone = obstHitX.collider.GetComponent<Obstacle_Drone>();
             if (obstacle_Box != null)
             {
                 hitObstacle_Box(obstacle_Box);
+            }
+            if (obstacle_Drone != null)
+            {
+                hitObstacle_Drone(obstacle_Drone);
             }
         }
 
@@ -131,9 +136,14 @@ public class Player : MonoBehaviour
         if (obstHitY.collider != null)
         {
             Obstacle_Box obstacle_Box = obstHitY.collider.GetComponent<Obstacle_Box>();
+            Obstacle_Drone obstacle_Drone = obstHitY.collider.GetComponent<Obstacle_Drone>();
             if (obstacle_Box != null)
             {
                 hitObstacle_Box(obstacle_Box);
+            }
+            if (obstacle_Drone != null)
+            {
+                hitObstacle_Drone(obstacle_Drone);
             }
         }
 
@@ -144,6 +154,11 @@ public class Player : MonoBehaviour
     void hitObstacle_Box(Obstacle_Box obstacle_Box)
     {
         Destroy(obstacle_Box.gameObject);
+        velocity.x *= 0.7f;
+    }
+    void hitObstacle_Drone(Obstacle_Drone obstacle_Drone)
+    {
+        Destroy(obstacle_Drone.gameObject);
         velocity.x *= 0.7f;
     }
     
