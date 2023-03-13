@@ -5,7 +5,6 @@ using UnityEngine;
 public class Obstacle_Drone : MonoBehaviour
 {
     Player player;
-    GameObject droneTemplate;
 
 
     // Start is called before the first frame update
@@ -21,28 +20,11 @@ public class Obstacle_Drone : MonoBehaviour
 
         // Van toc cua obstacles
         pos.x -= player.velocity.x * Time.deltaTime;
-        if (pos.x < -100)
+        if (pos.x < -10)
         {
             Destroy(gameObject);
         }
 
-        // Random obstacles
-        int obstacleNum = Random.Range(0, 3);
-        for (int i = 0; i < obstacleNum; i++)
-        {
-            // Tao obstacles
-            GameObject box = Instantiate(droneTemplate.gameObject);
-
-            // Position Random
-            //float y = goGround.groundHeight + 5;
-            //float halfWidth = goCollider.size.x / 2;
-            //float left = go.transform.position.x - halfWidth + 1;
-            //float right = go.transform.position.x + halfWidth -1;
-            //float x = Random.Range(left, right);
-
-            //Vector2 boxPos = new Vector2(x, y);
-            //box.transform.position = boxPos;
-        }
 
         transform.position = pos;
     }
