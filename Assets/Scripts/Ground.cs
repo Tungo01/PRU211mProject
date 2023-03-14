@@ -23,7 +23,7 @@ public class Ground : MonoBehaviour
     void Update()
     {
         Vector2 pos = transform.position;
-        pos.x -= player.velocity.x * Time.fixedDeltaTime;
+        pos.x -= player.velocity.x * Time.deltaTime;
         groundRight = transform.position.x + (collider.size.x / 2);
         if (groundRight < 0)
         {
