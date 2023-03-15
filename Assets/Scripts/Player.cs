@@ -147,13 +147,9 @@ public class Player : MonoBehaviour
         RaycastHit2D obstHitX = Physics2D.Raycast(obstOrigin, Vector2.right, velocity.x * Time.deltaTime);
         if (obstHitX.collider != null)
         {
-            Obstacle_Box obstacle_Box = obstHitX.collider.GetComponent<Obstacle_Box>();
             Obstacle_Drone obstacle_Drone = obstHitX.collider.GetComponent<Obstacle_Drone>();
             Obstacle_Spikes obstacle_Spikes = obstHitX.collider.GetComponent<Obstacle_Spikes>();
-            if (obstacle_Box != null)
-            {
-                hitObstacle_Box(obstacle_Box);
-            }
+
             if (obstacle_Drone != null)
             {
                 hitObstacle_Drone(obstacle_Drone);
@@ -167,13 +163,9 @@ public class Player : MonoBehaviour
         RaycastHit2D obstHitY = Physics2D.Raycast(obstOrigin, Vector2.up, velocity.y * Time.deltaTime);
         if (obstHitY.collider != null)
         {
-            Obstacle_Box obstacle_Box = obstHitY.collider.GetComponent<Obstacle_Box>();
+            //Obstacle_Box obstacle_Box = obstHitY.collider.GetComponent<Obstacle_Box>();
             Obstacle_Drone obstacle_Drone = obstHitY.collider.GetComponent<Obstacle_Drone>();
             Obstacle_Spikes obstacle_Spikes = obstHitY.collider.GetComponent<Obstacle_Spikes>();
-            if (obstacle_Box != null)
-            {
-                hitObstacle_Box(obstacle_Box);
-            }
             if (obstacle_Drone != null)
             {
                 hitObstacle_Drone(obstacle_Drone);
@@ -187,12 +179,6 @@ public class Player : MonoBehaviour
     }
 
 
-    ////    Destroy Obstacle khi va cham
-    void hitObstacle_Box(Obstacle_Box obstacle_Box)
-    {
-        Destroy(obstacle_Box.gameObject);
-        velocity.x *= 0.7f;
-    }
     void hitObstacle_Drone(Obstacle_Drone obstacle_Drone)
     {
         Destroy(obstacle_Drone.gameObject);
