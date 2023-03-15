@@ -27,4 +27,13 @@ public class Obstacle_Spikes : MonoBehaviour
 
         transform.position = pos;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+            player.velocity.x *= 0.5f;
+        }
+    }
 }
