@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
     public float maxHoldJumpTime = 0.4f;
     public float maxMaxHoldJumpTime = 0.4f;
     public float holdJumpTimer = 0f;
-    public float jumpThreshold = 1; 
+    public float jumpThreshold = 1;
+    public bool isDead = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   Vector2 pos = transform.position;
+        if (isDead)
+        {
+            return;
+        }
+        if (pos.y < -20)
+        {
+            isDead = true;
+        }
         float groundDistance = Mathf.Abs(pos.y-groundHeight); 
         if (isGrounded || groundDistance <= jumpThreshold)
         {
@@ -72,13 +81,31 @@ public class Player : MonoBehaviour
                 Ground ground = hit2D.collider.GetComponent<Ground>();
                 if (ground != null)
                 {
-                    groundHeight = ground.groundHeight;
-                    pos.y = groundHeight;
-                    velocity.y = 0;
-                    isGrounded = true;
+                    if(pos.y >= ground.groundHeight)
+                    {
+                        groundHeight = ground.groundHeight;
+                        pos.y = groundHeight;
+                        velocity.y = 0;
+                        isGrounded = true;
+
+                    }
+                    
                 }
             }
             Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.red);
+            Vector2 wall = new Vector2(pos.x, pos.y);
+            RaycastHit2D wallHit = Physics2D.Raycast(wall, Vector2.right, velocity.x * Time.deltaTime);
+            if (wallHit.collider != null)
+            {
+                Ground ground = wallHit.collider.GetComponent<Ground>();
+                if(ground!= null)
+                {
+                    if(pos.y < ground.groundHeight)
+                    {
+                        velocity.x = 0;
+                    }
+                }
+            }
             ////
             
         }
