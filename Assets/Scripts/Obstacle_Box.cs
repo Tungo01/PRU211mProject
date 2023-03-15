@@ -29,8 +29,15 @@ public class Obstacle_Box : MonoBehaviour
             Destroy(gameObject);
         }
 
-        
-
         transform.position = pos;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+            player.velocity.x *= 0.7f;
+        }
     }
 }
