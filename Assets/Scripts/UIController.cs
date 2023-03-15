@@ -30,7 +30,7 @@ public class UIController : MonoBehaviour
     {
         int distance = Mathf.FloorToInt(player.distance);
         distanceText.text = distance + " m";
-        if (player.isDead)
+        if (player.isDeaded)
         {
             Result.SetActive(true);
             FinalDistance.text = distance + " m";

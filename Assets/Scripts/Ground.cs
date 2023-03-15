@@ -13,6 +13,7 @@ public class Ground : MonoBehaviour
 
     public Obstacle_Box boxTemplate;
     public Obstacle_Drone droneTemplate;
+    public Obstacle_Spikes spikesTemplate;
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
@@ -59,7 +60,7 @@ public class Ground : MonoBehaviour
         Ground goGround = go.GetComponent<Ground>();
         goGround.groundHeight = go.transform.position.y + (goCollider.size.y / 2);
 
-        // Random obstacles box
+        //      Random obstacles box
         int obstacleNum = Random.Range(0, 3);
         for (int i = 0; i < obstacleNum; i++)
         {
@@ -76,7 +77,7 @@ public class Ground : MonoBehaviour
             Vector2 boxPos = new Vector2(x, y);
             box.transform.position = boxPos;
         }
-        // Random obstacles drone
+        //      Random obstacles drone
         int obstacleNumDrone = Random.Range(0, 3);
         for (int i = 0; i < obstacleNumDrone; i++)
         {
@@ -88,6 +89,23 @@ public class Ground : MonoBehaviour
             float halfWidth = goCollider.size.x / 2;
             float left = go.transform.position.x - halfWidth + 1;
             float right = go.transform.position.x + halfWidth - 1;
+            float x = Random.Range(left, right);
+
+            Vector2 boxPos = new Vector2(x, y);
+            drone.transform.position = boxPos;
+        }
+        //      Random obstacles spikes
+        int obstacleNumSpikes = Random.Range(0, 2);
+        for (int i = 0; i < obstacleNumSpikes; i++)
+        {
+            // Tao obstacles
+            GameObject drone = Instantiate(spikesTemplate.gameObject);
+
+            // Position Random
+            float y = goGround.groundHeight;
+            float halfWidth = goCollider.size.x / 2;
+            float left = go.transform.position.x - halfWidth + 5;
+            float right = go.transform.position.x + halfWidth - 5;
             float x = Random.Range(left, right);
 
             Vector2 boxPos = new Vector2(x, y);
