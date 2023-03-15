@@ -33,7 +33,7 @@ public class Obstacle_Spikes : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
-            player.velocity.x *= 0.5f;
+            player.isDeaded = true;
         }
     }
 }

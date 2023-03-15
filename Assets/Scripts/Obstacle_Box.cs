@@ -9,7 +9,7 @@ public class Obstacle_Box : MonoBehaviour
     //    GameObject go = Instantiate(gameObject);
     //    BoxCollider2D goCollider = go.GetComponent<BoxCollider2D>();
     Player player;
-    
+    UIController uIController;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +38,7 @@ public class Obstacle_Box : MonoBehaviour
         {
             Destroy(gameObject);
             player.velocity.x *= 0.5f;
+            
         }
     }
 }

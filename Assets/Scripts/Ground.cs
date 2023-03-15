@@ -60,25 +60,68 @@ public class Ground : MonoBehaviour
         Ground goGround = go.GetComponent<Ground>();
         goGround.groundHeight = go.transform.position.y + (goCollider.size.y / 2);
 
-        //      Random obstacles box
-        int obstacleNum = Random.Range(0, 3);
-        for (int i = 0; i < obstacleNum; i++)
+        //      Falling Ground
+        GroundFall fall = go.GetComponent<GroundFall>();
+        if (fall != null)
         {
-            // Tao obstacles
+            Destroy(fall);
+            fall = null;
+        }
+        if (Random.Range(0, 5) == 0)
+        {            
+            fall = go.AddComponent<GroundFall>();
+            fall.fallSpeed = Random.Range(0.5f, 1.5f);
+        }
+
+
+        //      Random obstacles box
+        int obstacleNumBox1 = Random.Range(0, 2);
+        for (int i = 0; i < obstacleNumBox1; i++)
+        {
+            // Tao obstacles left
             GameObject box = Instantiate(boxTemplate.gameObject);
 
             // Position Random
             float y = goGround.groundHeight;
             float halfWidth = goCollider.size.x / 2;
-            float left = go.transform.position.x - halfWidth + 1;
-            float right = go.transform.position.x + halfWidth - 1;
-            float x = Random.Range(left, right);
+            float left = go.transform.position.x - halfWidth + 10;
+            float leftHalf = left / 2;
+            float x = Random.Range(left, left + leftHalf);
 
-            Vector2 boxPos = new Vector2(x, y);
-            box.transform.position = boxPos;
+            Vector2 boxPos1 = new Vector2(x, y);
+            box.transform.position = boxPos1;
+
+            if (fall != null)
+            {
+                Obstacle_Box itemBox = box.GetComponent<Obstacle_Box>();
+                fall.listBox.Add(itemBox);
+            }
         }
+        int obstacleNumBox2 = Random.Range(0, 2);
+        for (int i = 0; i < obstacleNumBox2; i++)
+        {
+            // Tao obstacles right
+            GameObject box = Instantiate(boxTemplate.gameObject);
+
+            // Position Random
+            float y = goGround.groundHeight;
+            float halfWidth = goCollider.size.x / 2;
+            float right = go.transform.position.x + halfWidth - 10;
+            float rightHalf = right / 2;
+            float x = Random.Range(right - rightHalf, right);
+
+            Vector2 boxPos2 = new Vector2(x, y);
+            box.transform.position = boxPos2;
+
+            if (fall != null)
+            {
+                Obstacle_Box itemBox = box.GetComponent<Obstacle_Box>();
+                fall.listBox.Add(itemBox);
+            }
+        }
+
         //      Random obstacles drone
-        int obstacleNumDrone = Random.Range(0, 3);
+        int obstacleNumDrone = Random.Range(0, 2);
         for (int i = 0; i < obstacleNumDrone; i++)
         {
             // Tao obstacles
@@ -87,13 +130,14 @@ public class Ground : MonoBehaviour
             // Position Random
             float y = goGround.groundHeight + 5;
             float halfWidth = goCollider.size.x / 2;
-            float left = go.transform.position.x - halfWidth + 1;
-            float right = go.transform.position.x + halfWidth - 1;
+            float left = go.transform.position.x - halfWidth + 5;
+            float right = go.transform.position.x + halfWidth - 5;
             float x = Random.Range(left, right);
 
             Vector2 boxPos = new Vector2(x, y);
             drone.transform.position = boxPos;
         }
+
         //      Random obstacles spikes
         int obstacleNumSpikes = Random.Range(0, 2);
         for (int i = 0; i < obstacleNumSpikes; i++)
@@ -104,8 +148,8 @@ public class Ground : MonoBehaviour
             // Position Random
             float y = goGround.groundHeight;
             float halfWidth = goCollider.size.x / 2;
-            float left = go.transform.position.x - halfWidth + 5;
-            float right = go.transform.position.x + halfWidth - 5;
+            float left = go.transform.position.x - halfWidth + 17;
+            float right = go.transform.position.x + halfWidth - 17;
             float x = Random.Range(left, right);
 
             Vector2 boxPos = new Vector2(x, y);

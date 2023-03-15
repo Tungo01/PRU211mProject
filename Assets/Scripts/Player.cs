@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     public float holdJumpTimer = 0f;
     public float jumpThreshold = 1;
     public bool isDeaded = false;
+
+    GroundFall groundFall; 
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +49,12 @@ public class Player : MonoBehaviour
                 velocity.y = jumpVelocity;
                 isHoldingJump= true;
                 holdJumpTimer = 0f;
+
+                if (groundFall != null)
+                {
+                    groundFall.player = null;
+                    groundFall = null;
+                }
             }
         }
         if (Input.touchCount <= 0)
@@ -90,9 +98,17 @@ public class Player : MonoBehaviour
 
                     }
                     
+                    groundFall = ground.GetComponent<GroundFall>();
+                    if (groundFall != null)
+                    {
+                        groundFall.player = this;
+                    }
                 }
             }
             Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.red);
+
+
+            //      Va cham dam vao ground
             Vector2 wall = new Vector2(pos.x, pos.y);
             RaycastHit2D wallHit = Physics2D.Raycast(wall, Vector2.right, velocity.x * Time.deltaTime);
             if (wallHit.collider != null)
@@ -127,9 +143,13 @@ public class Player : MonoBehaviour
             Vector2 rayOrigin = new Vector2(pos.x - 0.7f, pos.y);
             Vector2 rayDirection = Vector2.up;
             float rayDistance = velocity.y * Time.deltaTime;
+            if (groundFall != null)
+            {
+                rayDistance = -groundFall.fallSpeed * Time.deltaTime;
+            }
             RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance);
             if(hit2D.collider == null)
-	    {
+	        {
                 isGrounded = false;
             }
             Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.yellow);
