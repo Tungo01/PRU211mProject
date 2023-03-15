@@ -139,38 +139,7 @@ public class Player : MonoBehaviour
 
 	    transform.position = pos;
 
-
-
-        ////    Obstacles tuong tac voi Player
-        Vector2 obstOrigin = new Vector2(pos.x, pos.y);
-
-        RaycastHit2D obstHitX = Physics2D.Raycast(obstOrigin, Vector2.right, velocity.x * Time.deltaTime);
-        if (obstHitX.collider != null)
-        {
-            Obstacle_Spikes obstacle_Spikes = obstHitX.collider.GetComponent<Obstacle_Spikes>();
-
-            if (obstacle_Spikes != null)
-            {
-                hitObstacle_Spikes(obstacle_Spikes);
-            }
-        }
-
-        RaycastHit2D obstHitY = Physics2D.Raycast(obstOrigin, Vector2.up, velocity.y * Time.deltaTime);
-        if (obstHitY.collider != null)
-        {
-            Obstacle_Spikes obstacle_Spikes = obstHitY.collider.GetComponent<Obstacle_Spikes>();
-            if (obstacle_Spikes != null)
-            {
-                hitObstacle_Spikes(obstacle_Spikes);
-            }
-        }
-
     }
 
-    void hitObstacle_Spikes(Obstacle_Spikes obstacle_Spikes)
-    {
-        Destroy(obstacle_Spikes.gameObject);
-        velocity.x *= 0.7f;
-    }
     
 }
