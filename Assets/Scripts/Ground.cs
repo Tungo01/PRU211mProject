@@ -85,7 +85,7 @@ public class Ground : MonoBehaviour
             GameObject drone = Instantiate(droneTemplate.gameObject);
 
             // Position Random
-            float y = goGround.groundHeight + 4;
+            float y = goGround.groundHeight + 5;
             float halfWidth = goCollider.size.x / 2;
             float left = go.transform.position.x - halfWidth + 1;
             float right = go.transform.position.x + halfWidth - 1;

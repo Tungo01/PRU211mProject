@@ -147,13 +147,8 @@ public class Player : MonoBehaviour
         RaycastHit2D obstHitX = Physics2D.Raycast(obstOrigin, Vector2.right, velocity.x * Time.deltaTime);
         if (obstHitX.collider != null)
         {
-            Obstacle_Drone obstacle_Drone = obstHitX.collider.GetComponent<Obstacle_Drone>();
             Obstacle_Spikes obstacle_Spikes = obstHitX.collider.GetComponent<Obstacle_Spikes>();
 
-            if (obstacle_Drone != null)
-            {
-                hitObstacle_Drone(obstacle_Drone);
-            }
             if (obstacle_Spikes != null)
             {
                 hitObstacle_Spikes(obstacle_Spikes);
@@ -163,13 +158,7 @@ public class Player : MonoBehaviour
         RaycastHit2D obstHitY = Physics2D.Raycast(obstOrigin, Vector2.up, velocity.y * Time.deltaTime);
         if (obstHitY.collider != null)
         {
-            //Obstacle_Box obstacle_Box = obstHitY.collider.GetComponent<Obstacle_Box>();
-            Obstacle_Drone obstacle_Drone = obstHitY.collider.GetComponent<Obstacle_Drone>();
             Obstacle_Spikes obstacle_Spikes = obstHitY.collider.GetComponent<Obstacle_Spikes>();
-            if (obstacle_Drone != null)
-            {
-                hitObstacle_Drone(obstacle_Drone);
-            }
             if (obstacle_Spikes != null)
             {
                 hitObstacle_Spikes(obstacle_Spikes);
@@ -178,12 +167,6 @@ public class Player : MonoBehaviour
 
     }
 
-
-    void hitObstacle_Drone(Obstacle_Drone obstacle_Drone)
-    {
-        Destroy(obstacle_Drone.gameObject);
-        velocity.x *= 0.7f;
-    }
     void hitObstacle_Spikes(Obstacle_Spikes obstacle_Spikes)
     {
         Destroy(obstacle_Spikes.gameObject);
