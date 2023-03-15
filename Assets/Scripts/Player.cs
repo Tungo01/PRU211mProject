@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     public float maxMaxHoldJumpTime = 0.4f;
     public float holdJumpTimer = 0f;
     public float jumpThreshold = 1;
-    public bool isDead = false;
+    public bool isDeaded = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,13 +30,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   Vector2 pos = transform.position;
-        if (isDead)
+        if (isDeaded)
         {
             return;
         }
         if (pos.y < -20)
         {
-            isDead = true;
+            isDeaded = true;
         }
         float groundDistance = Mathf.Abs(pos.y-groundHeight); 
         if (isGrounded || groundDistance <= jumpThreshold)
@@ -149,6 +149,7 @@ public class Player : MonoBehaviour
         {
             Obstacle_Box obstacle_Box = obstHitX.collider.GetComponent<Obstacle_Box>();
             Obstacle_Drone obstacle_Drone = obstHitX.collider.GetComponent<Obstacle_Drone>();
+            Obstacle_Spikes obstacle_Spikes = obstHitX.collider.GetComponent<Obstacle_Spikes>();
             if (obstacle_Box != null)
             {
                 hitObstacle_Box(obstacle_Box);
@@ -156,6 +157,10 @@ public class Player : MonoBehaviour
             if (obstacle_Drone != null)
             {
                 hitObstacle_Drone(obstacle_Drone);
+            }
+            if (obstacle_Spikes != null)
+            {
+                hitObstacle_Spikes(obstacle_Spikes);
             }
         }
 
@@ -164,6 +169,7 @@ public class Player : MonoBehaviour
         {
             Obstacle_Box obstacle_Box = obstHitY.collider.GetComponent<Obstacle_Box>();
             Obstacle_Drone obstacle_Drone = obstHitY.collider.GetComponent<Obstacle_Drone>();
+            Obstacle_Spikes obstacle_Spikes = obstHitY.collider.GetComponent<Obstacle_Spikes>();
             if (obstacle_Box != null)
             {
                 hitObstacle_Box(obstacle_Box);
@@ -171,6 +177,10 @@ public class Player : MonoBehaviour
             if (obstacle_Drone != null)
             {
                 hitObstacle_Drone(obstacle_Drone);
+            }
+            if (obstacle_Spikes != null)
+            {
+                hitObstacle_Spikes(obstacle_Spikes);
             }
         }
 
@@ -186,6 +196,11 @@ public class Player : MonoBehaviour
     void hitObstacle_Drone(Obstacle_Drone obstacle_Drone)
     {
         Destroy(obstacle_Drone.gameObject);
+        velocity.x *= 0.7f;
+    }
+    void hitObstacle_Spikes(Obstacle_Spikes obstacle_Spikes)
+    {
+        Destroy(obstacle_Spikes.gameObject);
         velocity.x *= 0.7f;
     }
     
