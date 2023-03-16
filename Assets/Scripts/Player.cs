@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     public LayerMask GroundLayerMask;
     public LayerMask ObstacleLayerMask;
     GroundFall groundFall; 
+    public AudioSource JumpSFX; 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,7 @@ public class Player : MonoBehaviour
         {
             if (Input.touchCount>0)
             {
+                JumpSFX.Play();
                 isGrounded = false;
                 velocity.y = jumpVelocity;
                 isHoldingJump= true;
@@ -65,13 +68,16 @@ public class Player : MonoBehaviour
         
         if (!isGrounded)
         {
+            
             if (isHoldingJump)
             {
+                
                 holdJumpTimer += Time.deltaTime;
                 if (holdJumpTimer >= maxHoldJumpTime)
                 {
                     isHoldingJump = false;
                 }
+
             }
 
             pos.y += velocity.y * Time.deltaTime;
