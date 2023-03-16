@@ -8,8 +8,8 @@ public class Player : MonoBehaviour
     public Animator animator;
     public float gravity;
     public float acceleration = 10;
-    public float maxAcceleration = 10;
-    public float maxSpeed = 100;
+    public float maxAcceleration = 5;
+    public float maxSpeed = 50;
     public Vector2 velocity;
     public float distance = 0;
     public float jumpVelocity = 20;
