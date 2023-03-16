@@ -363,7 +363,7 @@ MonoBehaviour:
   animator: {fileID: 379819166}
   gravity: -200
   acceleration: 10
-  maxAcceleration: 5
+  maxAcceleration: 10
   maxSpeed: 70
   velocity: {x: 0, y: 0}
   distance: 0
@@ -600,7 +600,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
