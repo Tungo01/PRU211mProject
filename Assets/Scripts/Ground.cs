@@ -72,7 +72,7 @@ public class Ground : MonoBehaviour
         if (Random.Range(0, 5) == 0)
         {            
             fall = go.AddComponent<GroundFall>();
-            fall.fallSpeed = Random.Range(0.5f, 1.5f);
+            fall.fallSpeed = Random.Range(0.5f, 1f);
         }
 
 
@@ -138,6 +138,12 @@ public class Ground : MonoBehaviour
 
             Vector2 boxPos = new Vector2(x, y);
             drone.transform.position = boxPos;
+
+            if (fall != null)
+            {
+                Obstacle_Drone itemDrone = drone.GetComponent<Obstacle_Drone>();
+                fall.listDrone.Add(itemDrone);
+            }
         }
 
         //      Random obstacles spikes
@@ -156,6 +162,7 @@ public class Ground : MonoBehaviour
 
             Vector2 spikesPos = new Vector2(x, y);
             spikes.transform.position = spikesPos;
+
             if (fall != null)
             {
                 Obstacle_Spikes itemSpikes = spikes.GetComponent<Obstacle_Spikes>();

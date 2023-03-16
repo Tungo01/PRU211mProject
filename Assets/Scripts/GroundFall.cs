@@ -56,6 +56,26 @@ public class GroundFall : MonoBehaviour
 
                 }
             }
+            foreach (Obstacle_Drone itemDrone in listDrone)
+            {
+                if (itemDrone != null)
+                {
+                    Vector2 boxPos = itemDrone.transform.position;
+                    boxPos.y -= falling;
+
+                    itemDrone.transform.position = boxPos;
+                }
+            }
+            foreach (Obstacle_Spikes itemSpikes in listSpikes)
+            {
+                if (itemSpikes != null)
+                {
+                    Vector2 boxPos = itemSpikes.transform.position;
+                    boxPos.y -= falling;
+
+                    itemSpikes.transform.position = boxPos;
+                }
+            }
 
             transform.position = pos;
         }

@@ -134,8 +134,8 @@ GameObject:
   - component: {fileID: 207459751}
   - component: {fileID: 207459748}
   - component: {fileID: 207459749}
-  m_Layer: 6
-  m_Name: Ground
+  m_Layer: 0
+  m_Name: GroundTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -376,13 +376,6 @@ MonoBehaviour:
   holdJumpTimer: 0
   jumpThreshold: 1
   isDeaded: 0
-  GroundLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  ObstacleLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  JumpSFX: {fileID: 379819165}
 --- !u!212 &379819161
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -443,8 +436,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379819159}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.8182, y: 17.6087, z: 0}
-  m_LocalScale: {x: 1.9765, y: 2.0826, z: 1}
+  m_LocalPosition: {x: 7.4, y: 13, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -613,6 +606,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+
 --- !u!1 &792383409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,7 +1252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1235864306}
   - component: {fileID: 1235864305}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
