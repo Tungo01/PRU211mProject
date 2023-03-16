@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Ground : MonoBehaviour
 {
@@ -70,7 +71,7 @@ public class Ground : MonoBehaviour
         if (Random.Range(0, 5) == 0)
         {            
             fall = go.AddComponent<GroundFall>();
-            fall.fallSpeed = Random.Range(0.5f, 1.5f);
+            fall.fallSpeed = Random.Range(0.5f, 1f);
         }
 
 
@@ -136,6 +137,12 @@ public class Ground : MonoBehaviour
 
             Vector2 boxPos = new Vector2(x, y);
             drone.transform.position = boxPos;
+
+            if (fall != null)
+            {
+                Obstacle_Drone itemDrone = drone.GetComponent<Obstacle_Drone>();
+                fall.listDrone.Add(itemDrone);
+            }
         }
 
         //      Random obstacles spikes
@@ -143,7 +150,7 @@ public class Ground : MonoBehaviour
         for (int i = 0; i < obstacleNumSpikes; i++)
         {
             // Tao obstacles
-            GameObject drone = Instantiate(spikesTemplate.gameObject);
+            GameObject spikes = Instantiate(spikesTemplate.gameObject);
 
             // Position Random
             float y = goGround.groundHeight;
@@ -153,7 +160,13 @@ public class Ground : MonoBehaviour
             float x = Random.Range(left, right);
 
             Vector2 boxPos = new Vector2(x, y);
-            drone.transform.position = boxPos;
+            spikes.transform.position = boxPos;
+
+            if (fall != null)
+            {
+                Obstacle_Spikes itemSpikes = spikes.GetComponent<Obstacle_Spikes>();
+                fall.listSpikes.Add(itemSpikes);
+            }
         }
     }
 
