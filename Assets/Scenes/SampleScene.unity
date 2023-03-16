@@ -363,7 +363,7 @@ MonoBehaviour:
   animator: {fileID: 379819166}
   gravity: -200
   acceleration: 10
-  maxAcceleration: 10
+  maxAcceleration: 5
   maxSpeed: 70
   velocity: {x: 0, y: 0}
   distance: 0
