@@ -9,7 +9,6 @@ public class GroundFall : MonoBehaviour
 
     public Player player;
     public List<Obstacle_Box> listBox = new List<Obstacle_Box>();
-    public List<Obstacle_Spikes> listSpikes = new List<Obstacle_Spikes>();
 
     // Start is called before the first frame update
     void Start()
@@ -42,38 +41,6 @@ public class GroundFall : MonoBehaviour
                     boxPos.y -= falling;
 
                     itemBox.transform.position = boxPos;
-
-                }
-            }
-            foreach (Obstacle_Spikes itemSpikes in listSpikes)
-            {
-                if (itemSpikes != null)
-                {
-                    Vector2 spikesPos = itemSpikes.transform.position;
-                    spikesPos.y -= falling;
-
-                    itemSpikes.transform.position = spikesPos;
-
-                }
-            }
-            foreach (Obstacle_Drone itemDrone in listDrone)
-            {
-                if (itemDrone != null)
-                {
-                    Vector2 boxPos = itemDrone.transform.position;
-                    boxPos.y -= falling;
-
-                    itemDrone.transform.position = boxPos;
-                }
-            }
-            foreach (Obstacle_Spikes itemSpikes in listSpikes)
-            {
-                if (itemSpikes != null)
-                {
-                    Vector2 boxPos = itemSpikes.transform.position;
-                    boxPos.y -= falling;
-
-                    itemSpikes.transform.position = boxPos;
                 }
             }
 

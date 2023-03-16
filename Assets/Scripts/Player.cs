@@ -5,10 +5,10 @@ using UnityEngine;
 //comment code
 public class Player : MonoBehaviour
 {
-
+    public Animator animator;
     public float gravity;
     public float acceleration = 10;
-    public float maxAcceleration = 5;
+    public float maxAcceleration = 10;
     public float maxSpeed = 100;
     public Vector2 velocity;
     public float distance = 0;
@@ -46,10 +46,12 @@ public class Player : MonoBehaviour
         float groundDistance = Mathf.Abs(pos.y-groundHeight); 
         if (isGrounded || groundDistance <= jumpThreshold)
         {
+            
             if (Input.touchCount>0)
             {
                 JumpSFX.Play();
                 isGrounded = false;
+                animator.SetBool("Jump", !isGrounded);
                 velocity.y = jumpVelocity;
                 isHoldingJump= true;
                 holdJumpTimer = 0f;
@@ -103,7 +105,7 @@ public class Player : MonoBehaviour
                     if(pos.y >= ground.groundHeight -0.5f)
                     {
                         groundHeight = ground.groundHeight;
-                        pos.y = groundHeight+0.5f;
+                        pos.y = groundHeight;
                         velocity.y = 0;
                         isGrounded = true;
 
