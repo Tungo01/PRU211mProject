@@ -34,6 +34,7 @@ public class Obstacle_Spikes : MonoBehaviour
         {
             Destroy(gameObject);
             player.isDeaded = true;
+            player.velocity.x= 0;
         }
     }
 }

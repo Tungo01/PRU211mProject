@@ -21,8 +21,11 @@ public class Player : MonoBehaviour
     public float holdJumpTimer = 0f;
     public float jumpThreshold = 1;
     public bool isDeaded = false;
-
+    public LayerMask GroundLayerMask;
+    public LayerMask ObstacleLayerMask;
     GroundFall groundFall; 
+    public AudioSource JumpSFX; 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +48,7 @@ public class Player : MonoBehaviour
         {
             if (Input.touchCount>0)
             {
+                JumpSFX.Play();
                 isGrounded = false;
                 velocity.y = jumpVelocity;
                 isHoldingJump= true;
@@ -64,13 +68,16 @@ public class Player : MonoBehaviour
         
         if (!isGrounded)
         {
+            
             if (isHoldingJump)
             {
+                
                 holdJumpTimer += Time.deltaTime;
                 if (holdJumpTimer >= maxHoldJumpTime)
                 {
                     isHoldingJump = false;
                 }
+
             }
 
             pos.y += velocity.y * Time.deltaTime;
@@ -83,13 +90,17 @@ public class Player : MonoBehaviour
             Vector2 rayOrigin = new Vector2(pos.x + 0.7f, pos.y);
             Vector2 rayDirection = Vector2.up;
             float rayDistance = velocity.y * Time.deltaTime;
-            RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance);
+            if (groundFall != null)
+            {
+                rayDistance = -groundFall.fallSpeed * Time.deltaTime;
+            }
+            RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance,GroundLayerMask);
             if(hit2D.collider != null)
             {
                 Ground ground = hit2D.collider.GetComponent<Ground>();
                 if (ground != null)
                 {
-                    if(pos.y >= ground.groundHeight)
+                    if(pos.y >= ground.groundHeight -0.5f)
                     {
                         groundHeight = ground.groundHeight;
                         pos.y = groundHeight;
@@ -110,7 +121,7 @@ public class Player : MonoBehaviour
 
             //      Va cham dam vao ground
             Vector2 wall = new Vector2(pos.x, pos.y);
-            RaycastHit2D wallHit = Physics2D.Raycast(wall, Vector2.right, velocity.x * Time.deltaTime);
+            RaycastHit2D wallHit = Physics2D.Raycast(wall, Vector2.right, velocity.x * Time.deltaTime,GroundLayerMask);
             if (wallHit.collider != null)
             {
                 Ground ground = wallHit.collider.GetComponent<Ground>();
@@ -140,14 +151,15 @@ public class Player : MonoBehaviour
             }
 
             ////
-            Vector2 rayOrigin = new Vector2(pos.x - 0.7f, pos.y);
+            Vector2 rayOrigin = new Vector2(pos.x - 0.7f, pos.y-0.5f);
             Vector2 rayDirection = Vector2.up;
             float rayDistance = velocity.y * Time.deltaTime;
+            
             if (groundFall != null)
             {
-                rayDistance = -groundFall.fallSpeed * Time.deltaTime;
+                rayDistance = -groundFall.fallSpeed  * Time.deltaTime;
             }
-            RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance);
+            RaycastHit2D hit2D = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance, GroundLayerMask);
             if(hit2D.collider == null)
 	        {
                 isGrounded = false;

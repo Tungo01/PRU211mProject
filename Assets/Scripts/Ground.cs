@@ -19,12 +19,13 @@ public class Ground : MonoBehaviour
     {
         player = GameObject.Find("Player").GetComponent<Player>();
         collider = GetComponent<BoxCollider2D>();
-        groundHeight = transform.position.y + (collider.size.y / 2);
+        
         screenRight = Camera.main.transform.position.x * 2;
     }
     
     void Update()
     {
+        groundHeight = transform.position.y + (collider.size.y / 2);
         Vector2 pos = transform.position;
         pos.x -= player.velocity.x * Time.deltaTime;
         groundRight = transform.position.x + (collider.size.x / 2);
