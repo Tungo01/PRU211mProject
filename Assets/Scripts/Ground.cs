@@ -160,8 +160,8 @@ public class Ground : MonoBehaviour
             float right = go.transform.position.x + halfWidth - 17;
             float x = Random.Range(left, right);
 
-            Vector2 boxPos = new Vector2(x, y);
-            spikes.transform.position = boxPos;
+            Vector2 spikesPos = new Vector2(x, y);
+            spikes.transform.position = spikesPos;
 
             if (fall != null)
             {
