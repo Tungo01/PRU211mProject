@@ -20,7 +20,7 @@ public class Obstacle_Drone : MonoBehaviour
 
         // Van toc cua obstacles
         pos.x -= (player.velocity.x* 1.1f) * Time.deltaTime;
-        if (pos.x < -10)
+        if (pos.x < -100)
         {
             Destroy(gameObject);
         }
