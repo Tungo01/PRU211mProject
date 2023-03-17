@@ -55,7 +55,7 @@ public class Ground : MonoBehaviour
         
         pos.y = transform.position.y;
         
-       pos.x = screenRight + 40;
+       pos.x = screenRight + 35;
 
         go.transform.position = pos;
 

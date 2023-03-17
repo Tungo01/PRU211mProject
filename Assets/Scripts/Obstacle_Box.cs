@@ -40,7 +40,7 @@ public class Obstacle_Box : MonoBehaviour
         {
             
             
-            player.velocity.x *= 0.5f;
+            player.velocity.x *= 0.6f;
             BoxBreaksfx.Play();
 
         }
