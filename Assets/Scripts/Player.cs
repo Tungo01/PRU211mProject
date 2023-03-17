@@ -24,8 +24,11 @@ public class Player : MonoBehaviour
     public LayerMask GroundLayerMask;
     public LayerMask ObstacleLayerMask;
     GroundFall groundFall; 
-    public AudioSource JumpSFX; 
-    
+    public AudioSource JumpSFX;
+    public AudioSource boxSFX;
+    public AudioSource droneSFX;
+    public AudioSource spikeSFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -174,6 +177,21 @@ public class Player : MonoBehaviour
 	    transform.position = pos;
 
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Box"))
+        {
+            boxSFX.Play();
+        }
+        if (collision.gameObject.CompareTag("Drone"))
+        {
+            droneSFX.Play();
 
-    
+        }
+        if (collision.gameObject.CompareTag("Spikes"))
+        {
+            spikeSFX.Play();
+        }
+    }
+
 }

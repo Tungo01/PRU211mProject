@@ -25,7 +25,7 @@ public class Obstacle_Box : MonoBehaviour
 
         // Van toc cua obstacles
         pos.x -= player.velocity.x * Time.deltaTime;
-        if (pos.x < -10)
+        if (pos.x < -100)
         {
             Destroy(gameObject);
         }

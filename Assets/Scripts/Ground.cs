@@ -123,14 +123,14 @@ public class Ground : MonoBehaviour
         }
 
         //      Random obstacles drone
-        int obstacleNumDrone = Random.Range(0, 1);
+        int obstacleNumDrone = Random.Range(0, 2);
         for (int i = 0; i < obstacleNumDrone; i++)
         {
             // Tao obstacles
             GameObject drone = Instantiate(droneTemplate.gameObject);
 
             // Position Random
-            float y = goGround.groundHeight + 7;
+            float y = goGround.groundHeight + 9;
             float halfWidth = goCollider.size.x / 2;
             float left = go.transform.position.x - halfWidth + 5;
             float right = go.transform.position.x + halfWidth - 5;
