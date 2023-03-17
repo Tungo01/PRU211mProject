@@ -72,12 +72,12 @@ public class Ground : MonoBehaviour
         if (Random.Range(0, 5) == 0)
         {            
             fall = go.AddComponent<GroundFall>();
-            fall.fallSpeed = Random.Range(0.5f, 1f);
+            fall.fallSpeed = Random.Range(0.5f, 1.2f);
         }
 
 
         //      Random obstacles box
-        int obstacleNumBox1 = Random.Range(0, 1);
+        int obstacleNumBox1 = Random.Range(0, 2);
         for (int i = 0; i < obstacleNumBox1; i++)
         {
             // Tao obstacles left
@@ -99,7 +99,7 @@ public class Ground : MonoBehaviour
                 fall.listBox.Add(itemBox);
             }
         }
-        int obstacleNumBox2 = Random.Range(0, 2);
+        int obstacleNumBox2 = Random.Range(0,2);
         for (int i = 0; i < obstacleNumBox2; i++)
         {
             // Tao obstacles right
@@ -109,7 +109,7 @@ public class Ground : MonoBehaviour
             float y = goGround.groundHeight;
             float halfWidth = goCollider.size.x / 2;
             float right = go.transform.position.x + halfWidth - 10;
-            float rightHalf = right / 2;
+            float rightHalf = right / 2-10;
             float x = Random.Range(right - rightHalf, right);
 
             Vector2 boxPos2 = new Vector2(x, y);
@@ -128,9 +128,9 @@ public class Ground : MonoBehaviour
         {
             // Tao obstacles
             GameObject drone = Instantiate(droneTemplate.gameObject);
-
+            var droneSpawnY = Random.Range(8, 12);
             // Position Random
-            float y = goGround.groundHeight + 9;
+            float y = goGround.groundHeight + droneSpawnY;
             float halfWidth = goCollider.size.x / 2;
             float left = go.transform.position.x - halfWidth + 5;
             float right = go.transform.position.x + halfWidth - 5;
