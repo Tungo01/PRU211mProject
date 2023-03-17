@@ -22,9 +22,9 @@ public class ParallaxBackground : MonoBehaviour
         float realVelocity = player.velocity.x / depth;
         Vector2 pos = transform.position;
         pos.x -= realVelocity * Time.deltaTime;
-        if(pos.x <= -30)
+        if(pos.x <= -60)
         {
-            pos.x = 60;
+            pos.x = 100;
         }
         transform.position = pos;
     }

@@ -29,7 +29,7 @@ public class Ground : MonoBehaviour
         Vector2 pos = transform.position;
         pos.x -= player.velocity.x * Time.deltaTime;
         groundRight = transform.position.x + (collider.size.x / 2);
-        if (groundRight < 0)
+        if (groundRight < -20)
         {
             Destroy(gameObject);
             return;
@@ -55,7 +55,7 @@ public class Ground : MonoBehaviour
         
         pos.y = transform.position.y;
         
-       pos.x = screenRight + 30;
+       pos.x = screenRight + 40;
 
         go.transform.position = pos;
 
@@ -128,7 +128,7 @@ public class Ground : MonoBehaviour
         {
             // Tao obstacles
             GameObject drone = Instantiate(droneTemplate.gameObject);
-            var droneSpawnY = Random.Range(8, 12);
+            var droneSpawnY = Random.Range(10, 13);
             // Position Random
             float y = goGround.groundHeight + droneSpawnY;
             float halfWidth = goCollider.size.x / 2;
