@@ -33,7 +33,7 @@ public class UIController : MonoBehaviour
         if (player.isDeaded)
         {
             Result.SetActive(true);
-            FinalDistance.text = distance + " m";
+            FinalDistance.text = "Score: "+distance + " m";
         }
     }
     public void Quit()
