@@ -19,7 +19,7 @@ public class Obstacle_Drone : MonoBehaviour
         Vector2 pos = transform.position;
 
         // Van toc cua obstacles
-        pos.x -= player.velocity.x * Time.deltaTime;
+        pos.x -= (player.velocity.x* 1.1f) * Time.deltaTime;
         if (pos.x < -10)
         {
             Destroy(gameObject);

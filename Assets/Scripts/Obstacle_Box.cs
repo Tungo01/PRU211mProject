@@ -10,6 +10,7 @@ public class Obstacle_Box : MonoBehaviour
     //    BoxCollider2D goCollider = go.GetComponent<BoxCollider2D>();
     Player player;
     UIController uIController;
+    public AudioSource BoxBreaksfx;
 
     // Start is called before the first frame update
     void Start()
@@ -34,11 +35,14 @@ public class Obstacle_Box : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Destroy(gameObject);
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
-            player.velocity.x *= 0.5f;
             
+            
+            player.velocity.x *= 0.5f;
+            BoxBreaksfx.Play();
+
         }
     }
 }

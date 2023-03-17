@@ -77,7 +77,7 @@ public class Ground : MonoBehaviour
 
 
         //      Random obstacles box
-        int obstacleNumBox1 = Random.Range(0, 2);
+        int obstacleNumBox1 = Random.Range(0, 1);
         for (int i = 0; i < obstacleNumBox1; i++)
         {
             // Tao obstacles left
@@ -123,7 +123,7 @@ public class Ground : MonoBehaviour
         }
 
         //      Random obstacles drone
-        int obstacleNumDrone = Random.Range(0, 2);
+        int obstacleNumDrone = Random.Range(0, 1);
         for (int i = 0; i < obstacleNumDrone; i++)
         {
             // Tao obstacles
