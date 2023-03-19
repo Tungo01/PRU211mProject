@@ -960,10 +960,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 379819166}
-  gravity: -200
+  gravity: -150
   acceleration: 10
   maxAcceleration: 7
-  maxSpeed: 60
+  maxSpeed: 80
   velocity: {x: 0, y: 0}
   distance: 0
   jumpVelocity: 30
@@ -2284,6 +2284,7 @@ GameObject:
   - component: {fileID: 792383411}
   - component: {fileID: 792383410}
   - component: {fileID: 792383413}
+  - component: {fileID: 792383414}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2453,6 +2454,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &792383414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792383409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f348ee31a213649ae1e6cbd9e63343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  yOffset: 5
+  target: {fileID: 379819162}
 --- !u!1 &825718972
 GameObject:
   m_ObjectHideFlags: 0
@@ -3549,8 +3565,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266297602}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.6454, y: -6.8471, z: 0.43311518}
-  m_LocalScale: {x: 65.00567, y: 18.90236, z: 1}
+  m_LocalPosition: {x: -3.6, y: -4.8, z: 0.43311518}
+  m_LocalScale: {x: 85.03391, y: 25.128761, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 442233295}
