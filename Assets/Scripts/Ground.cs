@@ -77,7 +77,7 @@ public class Ground : MonoBehaviour
 
 
         //      Random obstacles box
-        int obstacleNumBox1 = Random.Range(0, 2);
+        int obstacleNumBox1 = Random.Range(0, 1);
         for (int i = 0; i < obstacleNumBox1; i++)
         {
             // Tao obstacles left
@@ -128,7 +128,7 @@ public class Ground : MonoBehaviour
         {
             // Tao obstacles
             GameObject drone = Instantiate(droneTemplate.gameObject);
-            var droneSpawnY = Random.Range(11, 16);
+            var droneSpawnY = Random.Range(13, 16);
             // Position Random
             float y = goGround.groundHeight + droneSpawnY;
             float halfWidth = goCollider.size.x / 2;
