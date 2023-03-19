@@ -128,7 +128,7 @@ public class Ground : MonoBehaviour
         {
             // Tao obstacles
             GameObject drone = Instantiate(droneTemplate.gameObject);
-            var droneSpawnY = Random.Range(10, 13);
+            var droneSpawnY = Random.Range(11, 16);
             // Position Random
             float y = goGround.groundHeight + droneSpawnY;
             float halfWidth = goCollider.size.x / 2;
