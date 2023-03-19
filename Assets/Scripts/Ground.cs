@@ -57,16 +57,16 @@ public class Ground : MonoBehaviour
         float t = player.jumpVelocity / -player.gravity;
         float h2 = player.jumpVelocity * t + (0.5f * (player.gravity * (t * t)));
         float maxJumpHeight = h1 + h2;
-        float maxY = maxJumpHeight * 0.7f;
+        float maxY = maxJumpHeight * 0.8f;
         maxY += groundHeight;
-        float minY = 1;
+        float minY = 2;
         float actualY = Random.Range(minY, maxY);
 
         pos.y = actualY - goCollider.size.y / 2;
-        if (pos.y > 1.7f)
-            pos.y = 1.7f;
+        if (pos.y > 4f)
+            pos.y = 4f;
 
-        pos.x = screenRight + 35;
+        pos.x = screenRight + 40;
         go.transform.position = pos;
 
         Ground goGround = go.GetComponent<Ground>();
@@ -82,6 +82,7 @@ public class Ground : MonoBehaviour
         if (Random.Range(0, 5) == 0)
         {            
             fall = go.AddComponent<GroundFall>();
+            
             fall.fallSpeed = Random.Range(0.5f, 1.2f);
         }
 
@@ -98,7 +99,7 @@ public class Ground : MonoBehaviour
             float halfWidth = goCollider.size.x / 2;
             float left = go.transform.position.x - halfWidth + 10;
             float leftHalf = left / 2;
-            float x = Random.Range(left, left + leftHalf);
+            float x = Random.Range(left+10, left + leftHalf);
 
             Vector2 boxPos1 = new Vector2(x, y);
             box.transform.position = boxPos1;

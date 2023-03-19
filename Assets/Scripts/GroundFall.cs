@@ -6,7 +6,6 @@ public class GroundFall : MonoBehaviour
 {
     bool shouldFall = false;
     public float fallSpeed;
-
     public Player player;
     public List<Obstacle_Box> listBox = new List<Obstacle_Box>();
     public List<Obstacle_Spikes> listSpikes = new List<Obstacle_Spikes>();
@@ -21,7 +20,7 @@ public class GroundFall : MonoBehaviour
     void Update()
     {
         if (shouldFall)
-        {
+        {   
             Vector2 pos = transform.position;
             float falling = fallSpeed * Time.deltaTime;
             pos.y -= falling;
@@ -31,7 +30,6 @@ public class GroundFall : MonoBehaviour
                 player.groundHeight -= falling;
                 Vector2 playerPos = player.transform.position;
                 playerPos.y -= falling;
-
                 player.transform.position = playerPos;
             }
             foreach (Obstacle_Box itemBox in listBox)

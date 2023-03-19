@@ -6,20 +6,20 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Animator animator;
-    public float gravity;
+    public float gravity= -150;
     public float acceleration = 10;
-    public float maxAcceleration = 5;
-    public float maxSpeed = 50;
+    public float maxAcceleration = 7;
+    public float maxSpeed = 60;
     public Vector2 velocity;
     public float distance = 0;
-    public float jumpVelocity = 20;
+    public float jumpVelocity = 30;
     public float groundHeight = 10;
     public bool isGrounded = false;
     public bool isHoldingJump = false;
     public float maxHoldJumpTime = 0.4f;
     public float maxMaxHoldJumpTime = 0.4f;
     public float holdJumpTimer = 0f;
-    public float jumpThreshold = 1;
+    public float jumpThreshold = 0;
     public bool isDeaded = false;
     public LayerMask GroundLayerMask;
     public LayerMask ObstacleLayerMask;
@@ -186,6 +186,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Drone"))
         {
             droneSFX.Play();
+            
+            
 
         }
         if (collision.gameObject.CompareTag("Spikes"))

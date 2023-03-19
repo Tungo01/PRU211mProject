@@ -20,4 +20,8 @@ public class UIControllerTitle : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
     }
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
